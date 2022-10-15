@@ -3,9 +3,9 @@ project(src)
 
 set(CMAKE_CXX_STANDARD 14)
 
-file(GLOB SOURCE_FILES *.cpp)
+file(GLOB SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
 foreach(source ${SOURCE_FILES})
-    string(REGEX MATCHALL "[0-9-]+" filename ${source})
+    get_filename_component(filename ${source} NAME_WE)
     add_executable(${filename} ${source})
 endforeach()
